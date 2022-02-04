@@ -26,7 +26,7 @@ while True :
     #convert the result to an int and turn negative numbers to 0
     temp = int.from_bytes(Read_Conv.buf[0]+Read_Conv.buf[1],"big")
     if temp > 32767:
-	temp = temp - 65535
+	    temp = temp - 65535
     #print binary values
     time.sleep(0.1)
     print(format(temp, "016b"))
