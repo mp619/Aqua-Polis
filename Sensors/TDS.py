@@ -1,4 +1,4 @@
-from smbus2
+import smbus2
 import time
 
 while True :
@@ -13,11 +13,8 @@ while True :
     #Configure ADC
     ADC_Reg_Gain = 0x02 # A gain of 1, hence a v_ref of around 3V
 
-
-
-
-    #Write to Config Register for continuous conversion
-    Config_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conf,0x84,0x83])
+    #Write to Config Register for single-shot conversion
+    Config_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conf,0xC4,0x83])
     Pointer_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conv])
     bus.i2c_rdwr(Config_reg)
     bus.i2c_rdwr(Pointer_reg)
@@ -26,7 +23,11 @@ while True :
     #send the read ADC command and read two bytes of data
     Read_Conv = smbus2.i2c_msg.read(ADC_adr,2)
     bus.i2c_rdwr(Read_Conv)
-    #convert the result to an int
-    temp = int.from_bytes(read_result.buf[0]+read_result.buf[1],"big")
+    #convert the result to an int and turn negative numbers to 0
+    temp = int.from_bytes(Read_Conv.buf[0]+Read_Conv.buf[1],"big")
+    if temp > 32767:
+	temp = temp - 65535
+    #print binary values
     time.sleep(0.1)
+    print(format(temp, "016b"))
     print(temp)
