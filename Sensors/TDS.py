@@ -14,7 +14,7 @@ while True :
     ADC_Reg_Gain = 0x02 # A gain of 1, hence a v_ref of around 3V
 
     #Write to Config Register for single-shot conversion
-    Config_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conf,0xC4,0x83])
+    Config_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conf,0xC2,0x83])
     Pointer_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conv])
     bus.i2c_rdwr(Config_reg)
     bus.i2c_rdwr(Pointer_reg)
@@ -27,7 +27,9 @@ while True :
     temp = int.from_bytes(Read_Conv.buf[0]+Read_Conv.buf[1],"big")
     if temp > 32767:
 	    temp = temp - 65535
+    temp = temp*0.125	# Convert to mv
+    temp = temp*0.001   # Convert to V
     #print binary values
     time.sleep(0.1)
-    print(format(temp, "016b"))
-    print(temp)
+    #print(format(temp, "016b"))
+    print(temp, "V")
