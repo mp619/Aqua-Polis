@@ -31,7 +31,7 @@ while True :
 	    temp = temp - 65535
     temp = temp*0.1875	# Convert to mv
     temp = temp*0.001   # Convert to V
-    turb = (-1120.4*pow(temp,2) + 5742.3*temp - 4352.9)*0.001   
+    turb = (-1250*temp + 4999.25)*0.001 
     #print binary values
     time.sleep(0.1)
     #print(format(temp, "016b"))
