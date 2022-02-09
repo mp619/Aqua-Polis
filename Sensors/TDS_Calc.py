@@ -20,7 +20,7 @@ while True :
     bus.i2c_rdwr(Config_reg)
     bus.i2c_rdwr(Pointer_reg)
     #wait for measurement
-    time.sleep(0.1)
+    time.sleep(0.01)
     #send the read ADC command and read two bytes of data
     Read_Conv = smbus2.i2c_msg.read(ADC_adr,2)
     bus.i2c_rdwr(Read_Conv)
