@@ -7,7 +7,7 @@ import paho.mqtt.client as mqtt
 
 client = mqtt.Client()
 client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
-client.connect("test.mosquitto.org",port=1883)
+client.connect("broker.mqttdashboard.com",port=1883)
 
 def Json_create( SensorReading ):
     a_datetime = datetime.datetime.now()
