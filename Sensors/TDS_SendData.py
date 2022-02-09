@@ -6,7 +6,7 @@ import time
 import paho.mqtt.client as mqtt
 
 client = mqtt.Client()
-client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
+#client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
 client.connect("broker.mqttdashboard.com",port=1883)
 
 def Json_create( SensorReading ):
@@ -19,8 +19,8 @@ def Json_create( SensorReading ):
     json_output = json.dumps(Reading_dic)
     return json_output
 
-temp = []
 bus = smbus2.SMBus(1)
+temp_array = []
 
 while True :
     
@@ -52,9 +52,11 @@ while True :
     #print binary values
     time.sleep(0.1)
     print(temp)
-    if len(temp)== 5:
-        json_output = Json_create( temp)
-        temp = []
+    temp_array.append(temp)
+	
+    if len(temp_array)== 5:
+        json_output = Json_create( temp_array)
+        temp_array = []
         print(json_output)
         MSG_INFO= client.publish("IC.embedded/M2S2/test",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
