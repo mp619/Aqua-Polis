@@ -18,7 +18,7 @@ client = mqtt.Client()
 client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect("test.mosquitto.org",port=1883)
+client.connect("test.mosquitto.org",port=8884)
 
 def Json_create( SensorReading ):
     a_datetime = datetime.datetime.now()
