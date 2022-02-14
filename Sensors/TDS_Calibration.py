@@ -1,7 +1,7 @@
 import smbus2
 import time
 
-#get I2C bus
+    #get I2C bus
 bus = smbus2.SMBus(1)
 
 while True :
@@ -14,9 +14,9 @@ while True :
     #Configure ADC
     ADC_Reg_Gain = 0x02 # A gain of 1, hence a v_ref of around 3V
     #Write to Config Register for single-shot conversion
-    total = 0    # Intialize total
-    if i in range(0, 10):
-        Config_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conf,0xD1,0x83])
+    total = 0 # Intialize total
+    for i in range(0, 10):
+        Config_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conf,0xC2,0x83])
         Pointer_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conv])
         bus.i2c_rdwr(Config_reg)
         bus.i2c_rdwr(Pointer_reg)
@@ -31,10 +31,10 @@ while True :
     avg = total/10
     if avg > 32767:
 	    avg = avg - 65535
-    volts = avg*0.1875	# Convert to mv
-    volts = volts*0.001   # Convert to V
-    turb = (-1250*volts + 4999.25)*0.001 
+    volts = avg*0.125	# Convert to mv
+    volts = volts*0.001   # Conver to V
+    tds = (133.42*pow(volts,3) - 225.86*pow(volts,2) + 857.39*volts)*0.5 # Convert to tds (ppm) value
     #print binary values
     time.sleep(0.1)
     #print(format(temp, "016b"))
-    print(turb, "NTU")
+    print(volts, "V")

@@ -13,14 +13,14 @@ while True :
 
     #Configure ADC
     ADC_Reg_Gain = 0x02 # A gain of 1, hence a v_ref of around 3V
-
     #Write to Config Register for single-shot conversion
+<<<<<<< Updated upstream
     Config_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conf,0xC2,0x83])
     Pointer_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conv])
     bus.i2c_rdwr(Config_reg)
     bus.i2c_rdwr(Pointer_reg)
     #wait for measurement
-    time.sleep(0.1)
+    time.sleep(0.01)
     #send the read ADC command and read two bytes of data
     Read_Conv = smbus2.i2c_msg.read(ADC_adr,2)
     bus.i2c_rdwr(Read_Conv)
@@ -31,6 +31,28 @@ while True :
     temp = temp*0.125	# Convert to mv
     temp = temp*0.001   # Conver to V
     tds = (133.42*pow(temp,3) - 225.86*pow(temp,2) + 857.39*temp)*0.5 # Convert to tds (ppm) value
+=======
+    total = 0 # Intialize total
+    for i in range(0, 10):
+        Config_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conf,0xC2,0x83])
+        Pointer_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conv])
+        bus.i2c_rdwr(Config_reg)
+        bus.i2c_rdwr(Pointer_reg)
+        #wait for measurement
+        time.sleep(0.01)
+        #send the read ADC command and read two bytes of data
+        Read_Conv = smbus2.i2c_msg.read(ADC_adr,2)
+        bus.i2c_rdwr(Read_Conv)
+        #convert the result to an int and turn negative numbers to 0
+        t1 = int.from_bytes(Read_Conv.buf[0]+Read_Conv.buf[1],"big")
+        total = total + t1
+    avg = total/10
+    if avg > 32767:
+	    avg = avg - 65535
+    volts = avg*0.125	# Convert to mv
+    volts = volts*0.001   # Conver to V
+    tds = (133.42*pow(volts,3) - 225.86*pow(volts,2) + 857.39*volts)*0.5 # Convert to tds (ppm) value
+>>>>>>> Stashed changes
     #print binary values
     time.sleep(0.1)
     #print(format(temp, "016b"))
