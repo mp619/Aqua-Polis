@@ -2,7 +2,7 @@ import smbus2
 import time
 
     #get I2C bus
-    bus = smbus2.SMBus(1)
+bus = smbus2.SMBus(1)
 
 while True :
     #State address of ADC
