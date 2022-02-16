@@ -4,13 +4,13 @@ import TDS
 #State address of ADC
 ADC_adr = 0x48
 
-TDS.init()
-TDS.config()
+bus = TDS.init()
+TDS.config(bus, ADC_adr)
 
 while True:
     total = 0
     for i in range(0,100):
-        t1 = TDS.read(ADC_adr)
+        t1 = TDS.read(bus, ADC_adr)
         time.sleep(0.01)
         total = total + t1
     avg = total/100
