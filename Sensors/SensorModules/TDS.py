@@ -30,4 +30,6 @@ def convert(adc):
 	    adc = adc - 65535
     volts = adc*0.125	# Convert to mv
     tds = (8.4078*0.00000001*pow(volts,3) - 1.6026*0.0001*pow(volts,2) + 0.4641*volts - 9.9811) # Convert to tds (ppm) value
+    if tds < 0:
+        tds = 0
     return tds
