@@ -10,6 +10,9 @@ x = linspace(0,1500,100);
 p = polyfit(ppm_limit,mv_limit,3);
 y = polyval(p,x);
 
+x2 = linspace(0,2500,100);
+p2 = polyfit(mv_limit,ppm_limit,3);
+
 %% Plot
 figure
 plot(ppm_limit,mv_limit, 'x', 'LineWidth', 1.5)
