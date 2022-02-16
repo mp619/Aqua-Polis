@@ -32,8 +32,7 @@ while True :
     if avg > 32767:
 	    avg = avg - 65535
     volts = avg*0.125	# Convert to mv
-    volts = volts*0.001   # Conver to V
-    tds = (133.42*pow(volts,3) - 225.86*pow(volts,2) + 857.39*volts)*0.5 # Convert to tds (ppm) value
+    tds = (-6.7817*0.0000001*pow(volts,3) + 7.564*0.000001*pow(volts,2) + 2.7107*volts - 1.5035) # Convert to tds (ppm) value
     #print binary values
     time.sleep(0.1)
     #print(format(temp, "016b"))
