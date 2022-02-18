@@ -28,7 +28,7 @@ def read(bus, ADC_adr):
 def convert(adc):
     if adc > 32767:
 	    adc = adc - 65535
-    volts = avg*0.1875	# Convert to mv
+    volts = adc*0.1875	# Convert to mv
     volts = volts*0.001   # Convert to V
     turb = (-1250*volts + 4999.25)*0.001 #Convert Voltage to NTUs
     if turb < 0:
