@@ -43,8 +43,8 @@ LED_Thread.start()
 
 while True:
     if RGB.Press(button):
-        STATUS = 4
+        STATUS = 3
         time.sleep(5)
-    STATUS = 1
+        STATUS = 1
 
 
