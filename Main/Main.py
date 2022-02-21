@@ -27,13 +27,13 @@ def ledcolor():
         if STATUS == 0:
             break
         elif STATUS == 1:
-            RGB.StatusClean()
+            RGB.StatusClean(led)
         elif STATUS == 2:
-            RGB.StatusDirty()
+            RGB.StatusDirty(led)
         elif STATUS == 3:
-            RGB.StatusMeasuring()
+            RGB.StatusMeasuring(led)
         elif STATUS == 4:
-            RGB.StatusSending()
+            RGB.StatusSending(led)
         else:
             break
     RGB.StatusOff()
@@ -42,7 +42,7 @@ LED_Thread = Thread(target=ledcolor)
 LED_Thread.start()
 
 while True:
-    if RGB.Press():
+    if RGB.Press(button):
         STATUS = 4
         time.sleep(5)
     STATUS = 1
