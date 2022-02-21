@@ -27,8 +27,14 @@ def StatusClean(led):
 def StatusDirty(led):
     led.color = Color('red')
 
-def StatusUnknown(led):
+def StatusMeasuring(led):
     led.color = Color('orange')
     time.sleep(1)
     led.color = Color('black')
     time.sleep(1)
+
+def StatusSending(led):
+    led.color = Color('orange')
+
+def StatusOff(led):
+    led.off()
