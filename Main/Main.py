@@ -1,5 +1,5 @@
 from threading import Thread
-from time import time
+import time
 import smbus2
 import TDS as TDS
 import Turbidity as Turb
