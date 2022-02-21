@@ -36,13 +36,17 @@ def ledcolor():
                 RGB.StatusMeasuring() #Yellow LED
             case 4:
                 RGB.StatusSending() #Flashing LED
+            case _:
+                break   # Stop Thread
     RGB.StatusOff()
 
+LED_Thread = Thread(target=ledcolor)
+LED_Thread.start()
+
 while True:
-    STATUS = 1
-    LED_Thread = Thread(target=ledcolor)
     if RGB.Press():
         STATUS = 4
         time.sleep(5)
+    STATUS = 1
 
 
