@@ -15,7 +15,7 @@ while True :
     ADC_Reg_Gain = 0x02 # A gain of 1, hence a v_ref of around 3V
     #Write to Config Register for single-shot conversion
     total = 0    # Intialize total
-    if i in range(0, 10):
+    for i in range(0, 10):
         Config_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conf,0xD1,0x83])
         Pointer_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conv])
         bus.i2c_rdwr(Config_reg)
