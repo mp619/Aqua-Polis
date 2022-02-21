@@ -4,7 +4,6 @@ import smbus2
 import TDS as TDS
 import Turbidity as Turb
 import RGB
-import time
 
 # Init Objects
 bus = smbus2.SMBus(1)
@@ -25,19 +24,18 @@ STATUS = 1
 def ledcolor():
     global STATUS
     while STATUS:
-        match STATUS:
-            case 0:
-                break   # Stop Thread
-            case 1:
-                RGB.StatusClean()   #Green LED
-            case 2:
-                RGB.StatusDirty()   #Red LED
-            case 3:
-                RGB.StatusMeasuring() #Yellow LED
-            case 4:
-                RGB.StatusSending() #Flashing LED
-            case _:
-                break   # Stop Thread
+        if STATUS == 0:
+            break
+        elif STATUS == 1:
+            RGB.StatusClean()
+        elif STATUS == 2:
+            RGB.StatusDirty()
+        elif STATUS == 3:
+            RGB.StatusMeasuring()
+        elif STATUS == 4:
+            RGB.StatusSending()
+        else:
+            break
     RGB.StatusOff()
 
 LED_Thread = Thread(target=ledcolor)
