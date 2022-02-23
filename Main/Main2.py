@@ -22,7 +22,7 @@ button = RGB.ButtonInit()
 
 #TDS Config
 ADC_adr = 0x48 # ADC I2C address
-TDS.config(bus, ADC_adr)
+
 
 #Turb Config
 Turb.config(bus, ADC_adr)
@@ -63,8 +63,8 @@ def Json_create( TDS_value, Turb_Value ):
     return json_output
 
 
-#LED_Thread = Thread(target=ledcolor)
-#LED_Thread.start()
+LED_Thread = Thread(target=ledcolor)
+LED_Thread.start()
 
 while True:
     if RGB.Press(button):
@@ -73,16 +73,25 @@ while True:
         TDS_Total = 0
         Turb_Total = 0
         cycles = 100
+
+        ## Get TDS value
+        TDS.config(bus, ADC_adr)
+        time.sleep(1)
         for i in range(1,cycles):
-            #TDS_Total = TDS_Total + TDS.read(bus, ADC_adr)
-            print(TDS.read(bus, ADC_adr))
-            #Turb_Total = Turb_Total + Turb.read(bus, ADC_adr)
+            TDS_Total = TDS_Total + TDS.read(bus, ADC_adr)
         TDS_adc = TDS_Total/cycles
-        Turb_adc = Turb_Total/cycles
         TDS_value = TDS.convert(TDS_adc)
-        #print(TDS_value)
-        Turb_value = Turb.convert(Turb_adc)
-        #print(Turb_value)
+
+        ## Get Turb value
+        Turb.config(bus, ADC_adr)
+        time.sleep(1)
+        for i in range(1,cycles):
+            Turb_Total = Turb_Total + Turb.read(bus, ADC_adr)
+        Turb_adc = Turb_Total/cycles
+        Turb_value = Turb.convert(TDS_adc)
+
+        print(TDS_value, 'ppm')
+        print(Turb_value, 'NTU')
 
         ## Send to broker
         json_output = Json_create( TDS_value, Turb_value)
