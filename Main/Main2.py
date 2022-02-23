@@ -14,6 +14,7 @@ import requests
 client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
 client.connect("146.169.195.84",port=1883)
+client.on_message = on_message
 #temp_array = []
 
 # Init Objects
@@ -65,6 +66,17 @@ def Json_create( TDS_value, Turb_Value, Lon, Lat ):
     json_output = json.dumps(Reading_dic)
     return json_output
 
+def on_message(client, userdata, message) :
+    print("Received message:{} on topic{}".format(message.payload, message.topic))
+    if(message.topic=="IC.embedded/M2S2/results"):
+    # decode and turn from json to dict 
+        data = json.loads(message.payload)
+        drink = data['drink']
+        if drink == 'true':
+            STATUS = 2
+        else:
+            STATUS = 3
+
 LED_Thread = Thread(target=ledcolor)
 LED_Thread.start()
 
@@ -112,8 +124,11 @@ while True:
             lon = -0.1769
 
         ## Send to broker
+        STATUS = 5
         json_output = Json_create( TDS_value, Turb_value, lat, lon)
         print(json_output)
         MSG_INFO= client.publish("IC.embedded/M2S2/sensor",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
+
+
 
