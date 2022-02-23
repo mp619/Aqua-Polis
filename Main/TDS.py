@@ -17,7 +17,7 @@ def read(bus, ADC_adr):
     Pointer_reg = smbus2.i2c_msg.write(ADC_adr,[ADC_REG_PTR_Conv])
     bus.i2c_rdwr(Pointer_reg)
     #wait for measurement
-    time.sleep(0.01)
+    time.sleep(0.1)
     #send the read ADC command and read two bytes of data
     Read_Conv = smbus2.i2c_msg.read(ADC_adr,2)
     bus.i2c_rdwr(Read_Conv)
