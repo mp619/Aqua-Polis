@@ -76,12 +76,12 @@ while True:
         cycles = 100
 
         ## Get TDS value
-        #TDS.config(bus, ADC_adr)
-        #time.sleep(5)
-        #for i in range(1,cycles):
-        #    TDS_Total = TDS_Total + TDS.read(bus, ADC_adr)
-        #TDS_adc = TDS_Total/cycles
-        #TDS_value = TDS.convert(TDS_adc)
+        for i in range(1,cycles):
+            TDS.config(bus, ADC_adr)
+            time.sleep(0.01)
+            TDS_Total = TDS_Total + TDS.read(bus, ADC_adr)
+        TDS_adc = TDS_Total/cycles
+        TDS_value = TDS.convert(TDS_adc)
 
         ## Get Turb value
         for i in range(1,cycles):
@@ -91,7 +91,7 @@ while True:
         Turb_adc = Turb_Total/cycles
         Turb_value = Turb.convert(Turb_adc)
 
-        #print(TDS_value, 'ppm')
+        print(TDS_value, 'ppm')
         print(Turb_value, 'NTU')
 
         ## Send to broker
