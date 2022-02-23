@@ -28,25 +28,25 @@ ADC_adr = 0x48 # ADC I2C address
 Turb.config(bus, ADC_adr)
 
 #Global Variable for LED Thread
-STATUS = 0
-# 0 Turns off thread
-# 1 Clean - Green
-# 2 Dirty - Red
-# 3 Processing - Yellow
-# 4 Sending/Receiving - Yellow Flashing
+STATUS = 1
+# 1 Turns off LED
+# 2 Clean - Green
+# 3 Dirty - Red
+# 4 Processing - Yellow
+# 5 Sending/Receiving - Yellow Flashing
 
 def ledcolor():
     global STATUS
     while STATUS:
-        if STATUS == 0:
+        if STATUS == 1:
             RGB.StatusOff()
-        elif STATUS == 1:
-            RGB.StatusClean(led)
         elif STATUS == 2:
-            RGB.StatusDirty(led)
+            RGB.StatusClean(led)
         elif STATUS == 3:
-            RGB.StatusMeasuring(led)
+            RGB.StatusDirty(led)
         elif STATUS == 4:
+            RGB.StatusMeasuring(led)
+        elif STATUS == 5:
             RGB.StatusSending(led)
         else:
             break
@@ -69,7 +69,7 @@ LED_Thread.start()
 while True:
     if RGB.Press(button):
         ## Get TDS and Turb value
-        STATUS = 3  # Processing 
+        STATUS = 4  # Processing 
         TDS_Total = 0
         Turb_Total = 0
         cycles = 100
