@@ -51,7 +51,7 @@ def ledcolor():
         else:
             break
 
-def Json_create( TDS_Value, Turb_Value ):
+def Json_create( TDS_value, Turb_Value ):
     a_datetime = datetime.datetime.now()
     time_stamp = a_datetime.isoformat()
     Reading_dic = {
