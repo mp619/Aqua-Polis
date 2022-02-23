@@ -10,6 +10,17 @@ import json
 from dateutil.tz import tzutc
 import requests
 
+def on_message(client, userdata, message) :
+    print("Received message:{} on topic{}".format(message.payload, message.topic))
+    if(message.topic=="IC.embedded/M2S2/results"):
+    # decode and turn from json to dict 
+        data = json.loads(message.payload)
+        drink = data['drink']
+        if drink == 'true':
+            STATUS = 2
+        else:
+            STATUS = 3
+
 #MQTT
 client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
@@ -65,17 +76,6 @@ def Json_create( TDS_value, Turb_Value, Lon, Lat ):
     }
     json_output = json.dumps(Reading_dic)
     return json_output
-
-def on_message(client, userdata, message) :
-    print("Received message:{} on topic{}".format(message.payload, message.topic))
-    if(message.topic=="IC.embedded/M2S2/results"):
-    # decode and turn from json to dict 
-        data = json.loads(message.payload)
-        drink = data['drink']
-        if drink == 'true':
-            STATUS = 2
-        else:
-            STATUS = 3
 
 LED_Thread = Thread(target=ledcolor)
 LED_Thread.start()
