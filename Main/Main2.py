@@ -25,7 +25,7 @@ TDS.config(bus, ADC_adr)
 Turb.config(bus, ADC_adr)
 
 #Global Variable for LED Thread
-STATUS = 3
+STATUS = 0
 # 0 Turns off thread
 # 1 Clean - Green
 # 2 Dirty - Red
@@ -36,7 +36,7 @@ def ledcolor():
     global STATUS
     while STATUS:
         if STATUS == 0:
-            break
+            RGB.StatusOff()
         elif STATUS == 1:
             RGB.StatusClean(led)
         elif STATUS == 2:
@@ -47,7 +47,6 @@ def ledcolor():
             RGB.StatusSending(led)
         else:
             break
-    RGB.StatusOff()
 
 def Json_create( TDS_Value, Turb_Value ):
     a_datetime = datetime.datetime.now()
@@ -74,6 +73,7 @@ while True:
         for i in range(1,cycles):
             TDS_Total = TDS_Total + TDS.read(bus)
             Turb_Total = Turb_Total + Turb.read(bus)
+            print(TDS_Total)
         TDS_adc = TDS_Total/cycles
         Turb_adc = Turb_Total/cycles
         TDS_value = TDS.convert(TDS_adc)
