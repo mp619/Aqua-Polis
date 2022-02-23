@@ -79,6 +79,8 @@ def Json_create( TDS_value, Turb_Value, Lon, Lat ):
 
 LED_Thread = Thread(target=ledcolor)
 LED_Thread.start()
+Message_Thread = Thread(target=client.loop_forever())
+Message_Thread.start()
 
 while True:
     if not RGB.Press(button):
