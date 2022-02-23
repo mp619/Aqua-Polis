@@ -12,7 +12,7 @@ from dateutil.tz import tzutc
 #MQTT
 client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
-client.connect("broker.mqttdashboard.com",port=1883)
+client.connect("146.169.195.84",port=1883)
 temp_array = []
 
 # Init Objects
@@ -77,7 +77,7 @@ while True:
 
         ## Get TDS value
         TDS.config(bus, ADC_adr)
-        time.sleep(1)
+        time.sleep(3)
         for i in range(1,cycles):
             TDS_Total = TDS_Total + TDS.read(bus, ADC_adr)
         TDS_adc = TDS_Total/cycles
@@ -85,7 +85,7 @@ while True:
 
         ## Get Turb value
         Turb.config(bus, ADC_adr)
-        time.sleep(1)
+        time.sleep(3)
         for i in range(1,cycles):
             Turb_Total = Turb_Total + Turb.read(bus, ADC_adr)
         Turb_adc = Turb_Total/cycles
@@ -97,6 +97,6 @@ while True:
         ## Send to broker
         json_output = Json_create( TDS_value, Turb_value)
         print(json_output)
-        MSG_INFO= client.publish("IC.embedded/M2S2/test",json_output)
+        MSG_INFO= client.publish("IC.embedded/M2S2/sensor",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
 
