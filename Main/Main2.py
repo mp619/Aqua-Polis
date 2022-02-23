@@ -20,6 +20,7 @@ def on_message(client, userdata, message) :
             STATUS = 2
         else:
             STATUS = 3
+        client.loop_stop()
 
 #MQTT
 client = mqtt.Client()
@@ -79,8 +80,8 @@ def Json_create( TDS_value, Turb_Value, Lon, Lat ):
 
 LED_Thread = Thread(target=ledcolor)
 LED_Thread.start()
-Message_Thread = Thread(target=client.loop_forever())
-Message_Thread.start()
+#Message_Thread = Thread(target=client.loop_forever())
+#Message_Thread.start()
 
 while True:
     if not RGB.Press(button):
@@ -131,6 +132,9 @@ while True:
         print(json_output)
         MSG_INFO= client.publish("IC.embedded/M2S2/sensor",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
+
+        ## Receive from broker
+        client.loop_start()
 
 
 
