@@ -10,7 +10,8 @@ TDS.config(bus, ADC_adr)
 Turb.config(bus, ADC_adr)
 
 while True:
-    total = 0
+    total_TDS = 0
+    total_Turb = 0
     for i in range(0,100):
         t1 = TDS.read(bus, ADC_adr)
         time.sleep(0.01)
