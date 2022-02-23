@@ -8,11 +8,12 @@ import paho.mqtt.client as mqtt
 import datetime
 import json
 from dateutil.tz import tzutc
+import requests
 
 #MQTT
-#client = mqtt.Client()
+client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
-#client.connect("146.169.195.84",port=1883)
+client.connect("146.169.195.84",port=1883)
 #temp_array = []
 
 # Init Objects
@@ -51,23 +52,24 @@ def ledcolor():
         else:
             break
 
-def Json_create( TDS_value, Turb_Value ):
+def Json_create( TDS_value, Turb_Value, Lon, Lat ):
     a_datetime = datetime.datetime.now()
     time_stamp = a_datetime.isoformat()
     Reading_dic = {
         'TimeStamp': time_stamp,
         'TDS': TDS_value,
-        'TSS': Turb_Value
+        'TSS': Turb_Value,
+        'Lon': Lon,
+        'Lat': Lat
     }
     json_output = json.dumps(Reading_dic)
     return json_output
-
 
 LED_Thread = Thread(target=ledcolor)
 LED_Thread.start()
 
 while True:
-    if RGB.Press(button):
+    if not RGB.Press(button):
         print('Button Pressed...')
         ## Get TDS and Turb value
         STATUS = 4  # Processing 
@@ -94,8 +96,18 @@ while True:
         print(TDS_value, 'ppm')
         print(Turb_value, 'NTU')
 
+        url = 'https://extreme-ip-lookup.com/json/'
+        r = requests.get(url)
+        data = json.loads(r.content.decode())
+        ip = data['query']
+        response = requests.get("https://geolocation-db.com/json/"+ip+"&position=true").json()
+        lat = response['latitude']
+        lon = response['longitude']
+        print("Latitude: ", lat)
+        print("Longitude: ", lon)
+
         ## Send to broker
-        json_output = Json_create( TDS_value, Turb_value)
+        json_output = Json_create( TDS_value, Turb_value, lat, lon)
         print(json_output)
         MSG_INFO= client.publish("IC.embedded/M2S2/sensor",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
