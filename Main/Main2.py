@@ -39,7 +39,7 @@ def ledcolor():
     global STATUS
     while STATUS:
         if STATUS == 1:
-            RGB.StatusOff()
+            RGB.StatusOff(led)
         elif STATUS == 2:
             RGB.StatusClean(led)
         elif STATUS == 3:
@@ -68,6 +68,7 @@ LED_Thread.start()
 
 while True:
     if RGB.Press(button):
+        print('Button Pressed...')
         ## Get TDS and Turb value
         STATUS = 4  # Processing 
         TDS_Total = 0
