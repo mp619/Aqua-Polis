@@ -96,15 +96,20 @@ while True:
         print(TDS_value, 'ppm')
         print(Turb_value, 'NTU')
 
-        url = 'https://extreme-ip-lookup.com/json/'
-        r = requests.get(url)
-        data = json.loads(r.content.decode())
-        ip = data['query']
-        response = requests.get("https://geolocation-db.com/json/"+ip+"&position=true").json()
-        lat = response['latitude']
-        lon = response['longitude']
-        print("Latitude: ", lat)
-        print("Longitude: ", lon)
+        ## Get Long and Lat to seen
+        try:
+            url = 'https://extreme-ip-lookup.com/json/'
+            r = requests.get(url)
+            data = json.loads(r.content.decode())
+            ip = data['query']
+            response = requests.get("https://geolocation-db.com/json/"+ip+"&position=true").json()
+            lat = response['latitude']
+            lon = response['longitude']
+            print("Latitude: ", lat)
+            print("Longitude: ", lon)
+        except:
+            lat = 51.4963
+            lon = -0.1769
 
         ## Send to broker
         json_output = Json_create( TDS_value, Turb_value, lat, lon)
