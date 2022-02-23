@@ -49,12 +49,13 @@ def ledcolor():
             break
     RGB.StatusOff()
 
-def Json_create( SensorReading ):
+def Json_create( TDS_Value, Turb_Value ):
     a_datetime = datetime.datetime.now()
     time_stamp = a_datetime.isoformat()
     Reading_dic = {
         'TimeStamp': time_stamp,
-        'SensorReading': SensorReading
+        'TDS': TDS_value,
+        'TSS': Turb_Value
     }
     json_output = json.dumps(Reading_dic)
     return json_output
@@ -65,6 +66,7 @@ LED_Thread.start()
 
 while True:
     if RGB.Press(button):
+        ## Get TDS and Turb value
         STATUS = 3  # Processing 
         TDS_Total = 0
         Turb_Total = 0
@@ -75,13 +77,13 @@ while True:
         TDS_adc = TDS_Total/cycles
         Turb_adc = Turb_Total/cycles
         TDS_value = TDS.convert(TDS_adc)
+        print(TDS_value)
         Turb_value = Turb.convert(Turb_adc)
-        temp_array.append(TDS_value)
-        temp_array.append(Turb_value)
-        if len(temp_array)== 2:
-            json_output = Json_create( temp_array)
-            temp_array = []
-            print(json_output)
-            MSG_INFO= client.publish("IC.embedded/M2S2/test",json_output)
-            print(mqtt.error_string(MSG_INFO.rc))
+        print(Turb_value)
+
+        ## Send to broker
+        json_output = Json_create( TDS_value, Turb_value)
+        print(json_output)
+        MSG_INFO= client.publish("IC.embedded/M2S2/test",json_output)
+        print(mqtt.error_string(MSG_INFO.rc))
 
