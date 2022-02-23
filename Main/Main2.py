@@ -63,8 +63,8 @@ def Json_create( TDS_value, Turb_Value ):
     return json_output
 
 
-LED_Thread = Thread(target=ledcolor)
-LED_Thread.start()
+#LED_Thread = Thread(target=ledcolor)
+#LED_Thread.start()
 
 while True:
     if RGB.Press(button):
