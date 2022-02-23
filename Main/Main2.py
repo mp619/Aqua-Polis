@@ -80,9 +80,9 @@ while True:
         TDS_adc = TDS_Total/cycles
         Turb_adc = Turb_Total/cycles
         TDS_value = TDS.convert(TDS_adc)
-        print(TDS_value)
+        #print(TDS_value)
         Turb_value = Turb.convert(Turb_adc)
-        print(Turb_value)
+        #print(Turb_value)
 
         ## Send to broker
         json_output = Json_create( TDS_value, Turb_value)
