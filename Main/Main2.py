@@ -71,8 +71,8 @@ while True:
         Turb_Total = 0
         cycles = 100
         for i in range(1,cycles):
-            TDS_Total = TDS_Total + TDS.read(bus)
-            Turb_Total = Turb_Total + Turb.read(bus)
+            TDS_Total = TDS_Total + TDS.read(bus, ADC_adr)
+            Turb_Total = Turb_Total + Turb.read(bus, ADC_adr)
             print(TDS_Total)
         TDS_adc = TDS_Total/cycles
         Turb_adc = Turb_Total/cycles
