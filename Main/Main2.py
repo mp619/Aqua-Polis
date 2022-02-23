@@ -32,9 +32,6 @@ STATUS = 3
 # 3 Processing - Yellow
 # 4 Sending/Receiving - Yellow Flashing
 
-LED_Thread = Thread(target=ledcolor)
-LED_Thread.start()
-
 def ledcolor():
     global STATUS
     while STATUS:
@@ -61,6 +58,10 @@ def Json_create( SensorReading ):
     }
     json_output = json.dumps(Reading_dic)
     return json_output
+
+
+LED_Thread = Thread(target=ledcolor)
+LED_Thread.start()
 
 while True:
     if RGB.Press(button):
