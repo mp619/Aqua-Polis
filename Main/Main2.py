@@ -10,6 +10,10 @@ import json
 from dateutil.tz import tzutc
 import requests
 
+def on_publish(client, userdata, message) :
+    client.loop_start()
+
+
 def on_message(client, userdata, message) :
     print("Received message:{} on topic{}".format(message.payload, message.topic))
     if(message.topic=="IC.embedded/M2S2/results"):
@@ -26,7 +30,9 @@ def on_message(client, userdata, message) :
 client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
 client.connect("146.169.195.84",port=1883)
+client.on_publish = on_publish
 client.on_message = on_message
+
 #temp_array = []
 
 # Init Objects
@@ -132,9 +138,6 @@ while True:
         print(json_output)
         MSG_INFO= client.publish("IC.embedded/M2S2/sensor",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
-
-        ## Receive from broker
-        client.loop_start()
 
 
 
