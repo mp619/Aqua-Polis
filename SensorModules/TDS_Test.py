@@ -17,9 +17,9 @@ while True:
         t1 = TDS.read(bus, ADC_adr)
         print(t1)
         time.sleep(1)
-        Turb.config(bus, ADC_adr)
-        t2 = Turb.read(bus, ADC_adr)
-        print(t2)
+        #Turb.config(bus, ADC_adr)
+        #t2 = Turb.read(bus, ADC_adr)
+        #print(t2)
         time.sleep(1)
         total_TDS = total_TDS + t1
         total_Turb = total_Turb + t2
