@@ -22,9 +22,9 @@ while True:
         #print(t2)
         time.sleep(1)
         total_TDS = total_TDS + t1
-        total_Turb = total_Turb + t2
+        #total_Turb = total_Turb + t2
     avg_TDS = total_TDS/10
-    avg_Turb = total_Turb/10
+    #avg_Turb = total_Turb/10
     tds = TDS.convert(avg_TDS)
-    turb = Turb.convert(avg_Turb)
+    #turb = Turb.convert(avg_Turb)
     print(tds, 'ppm', turb, 'NTU') 
