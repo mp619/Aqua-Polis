@@ -10,10 +10,10 @@ import json
 from dateutil.tz import tzutc
 
 #MQTT
-client = mqtt.Client()
+#client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
-client.connect("146.169.195.84",port=1883)
-temp_array = []
+#client.connect("146.169.195.84",port=1883)
+#temp_array = []
 
 # Init Objects
 bus = smbus2.SMBus(1)
@@ -77,7 +77,7 @@ while True:
 
         ## Get TDS value
         TDS.config(bus, ADC_adr)
-        time.sleep(3)
+        time.sleep(5)
         for i in range(1,cycles):
             TDS_Total = TDS_Total + TDS.read(bus, ADC_adr)
         TDS_adc = TDS_Total/cycles
@@ -85,7 +85,7 @@ while True:
 
         ## Get Turb value
         Turb.config(bus, ADC_adr)
-        time.sleep(3)
+        time.sleep(5)
         for i in range(1,cycles):
             Turb_Total = Turb_Total + Turb.read(bus, ADC_adr)
         Turb_adc = Turb_Total/cycles
