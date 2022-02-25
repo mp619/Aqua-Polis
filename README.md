@@ -31,9 +31,8 @@ To do:
 --Sensor hardware and power--
 - [x] Turbidity
 - [x] TDS
-- Battery ?
-- More sensors ?
-- Temperature compensation ?
+- [ ] LED and button
+- [ ] Advanced model: Battery, More sensors, Temperature compensation ?
 - [ ] Connection safety and error handling
 
 
@@ -49,7 +48,7 @@ To do:
 - [ ] Event queue and threading (E.g. Battery life, different sensors and LED)
 - [ ] Temperature compensation
 - [ ] Additional sensors
-- [ ] CAD prototype
+- [x] CAD prototype
 - [ ] Second marketing page with advanced version (only prototype due to external project constraints)
 - [ ] Creative way of using Python classes
 
