@@ -52,3 +52,4 @@ To do:
 - [ ] Second marketing page with advanced version (only prototype due to external project constraints)
 - [ ] Creative way of using Python classes
 
+![image](https://user-images.githubusercontent.com/59872205/155750775-1b88fc73-87a6-4835-b799-27842b31e469.png)
