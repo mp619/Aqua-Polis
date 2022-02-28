@@ -19,7 +19,7 @@ def on_connect(client, userdata, flags, rc):
         print("Successful Connection")
         #print("Connected with result code "+str(rc))
         client.subscribe("IC.embedded/M2S2/#")
-        STATUS = 1
+        STATUS = 6
     else:
         print("Bad Connection, returned code=", rc)
         STATUS = 7
@@ -109,7 +109,6 @@ LED_Thread.start()
 #Message_Thread.start()
 
 while True:
-    STATUS = 6
     time.sleep(5)
     if not RGB.Press(button):
         print('Button Pressed...')
