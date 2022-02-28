@@ -10,27 +10,29 @@ import json
 from dateutil.tz import tzutc
 import requests
 
-def on_publish(client, userdata, message) :
-    client.loop_forever()
+def on_connect(client, userdata, flags, rc):
+
+    print("Connected with result code "+str(rc))
+    client.subscribe("IC.embedded/M2S2/#")
 
 
-#def on_message(client, userdata, message) :
-#    print("Received message:{} on topic{}".format(message.payload, message.topic))
-#    if(message.topic=="IC.embedded/M2S2/results"):
-#    # decode and turn from json to dict 
-#        data = json.loads(message.payload)
-#        drink = data['drink']
-#        if drink == 'true':
-#            STATUS = 2
-#        else:
-#            STATUS = 3
-#        client.loop_stop()
+def on_message(client, userdata, message) :
+   print("Received message:{} on topic{}".format(message.payload, message.topic))
+   if(message.topic=="IC.embedded/M2S2/results"):
+   # decode and turn from json to dict 
+       data = json.loads(message.payload)
+       drink = data['drink']
+       if drink == 'true':
+           STATUS = 2
+       else:
+           STATUS = 3
+       client.loop_stop()
 
 #MQTT
 client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
-client.connect("146.169.195.84",port=1883)
-#client.on_publish = on_publish
+client.connect("146.169.198.107",port=1883)
+client.on_connect = on_connect
 #client.on_message = on_message
 
 #temp_array = []
@@ -142,6 +144,7 @@ while True:
         print(json_output)
         MSG_INFO= client.publish("IC.embedded/M2S2/sensor",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
+        client.loop_start()
 
 
 
