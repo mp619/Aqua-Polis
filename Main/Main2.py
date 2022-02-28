@@ -33,7 +33,7 @@ client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
 client.connect("146.169.198.107",port=1883)
 client.on_connect = on_connect
-#client.on_message = on_message
+client.on_message = on_message
 
 #temp_array = []
 
@@ -144,7 +144,7 @@ while True:
         print(json_output)
         MSG_INFO= client.publish("IC.embedded/M2S2/sensor",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
-        client.loop()
+        client.loop_start()
 
 
 
