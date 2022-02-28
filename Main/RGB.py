@@ -21,6 +21,9 @@ def Press(button):    # Return a bool if button is pressed and let go
             return 1    # Return 1 if button pressed then released
     return 0    # Return 0 if button not released
 
+def StatusOn(led):
+    led.color = Color('blue')
+
 def StatusClean(led):
     led.color = Color('green')
 

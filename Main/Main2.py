@@ -54,6 +54,7 @@ STATUS = 1
 # 3 Dirty - Red
 # 4 Processing - Yellow
 # 5 Sending/Receiving - Yellow Flashing
+# 6 Before Button Press - Blue
 
 def ledcolor():
     global STATUS
@@ -68,6 +69,8 @@ def ledcolor():
             RGB.StatusMeasuring(led)
         elif STATUS == 5:
             RGB.StatusSending(led)
+        elif STATUS == 6:
+            RGB.StatusOn(led)
         else:
             break
 
@@ -90,6 +93,7 @@ LED_Thread.start()
 #Message_Thread.start()
 
 while True:
+    STATUS = 6
     if not RGB.Press(button):
         print('Button Pressed...')
         ## Get TDS and Turb value
