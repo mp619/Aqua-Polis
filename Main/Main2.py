@@ -10,10 +10,20 @@ import json
 from dateutil.tz import tzutc
 import requests
 
-def on_connect(client, userdata, flags, rc):
+#Global Variable for LED Thread
+STATUS = 1
 
-    print("Connected with result code "+str(rc))
-    client.subscribe("IC.embedded/M2S2/#")
+def on_connect(client, userdata, flags, rc):
+    global STATUS
+    if rc ==0:
+        print("Successful Connection")
+        #print("Connected with result code "+str(rc))
+        client.subscribe("IC.embedded/M2S2/#")
+        STATUS = 1
+    else:
+        print("Failed Connection")
+        STATUS = 7
+
 
 
 def on_message(client, userdata, message) :
@@ -52,14 +62,13 @@ ADC_adr = 0x48 # ADC I2C address
 #Turb Config
 Turb.config(bus, ADC_adr)
 
-#Global Variable for LED Thread
-STATUS = 1
 # 1 Turns off LED
 # 2 Clean - Green
 # 3 Dirty - Red
-# 4 Processing - Yellow
-# 5 Sending/Receiving - Yellow Flashing
+# 4 Processing - Blue flashing
+# 5 Sending/Receiving - Yellow
 # 6 Before Button Press - Blue
+# 7 Comms Failed - Red Flashing
 
 def ledcolor():
     global STATUS
@@ -76,6 +85,8 @@ def ledcolor():
             RGB.StatusSending(led)
         elif STATUS == 6:
             RGB.StatusOn(led)
+        elif STATUS == 7:
+            RGB.StatusFailSending(led)
         else:
             break
 
@@ -99,6 +110,7 @@ LED_Thread.start()
 
 while True:
     STATUS = 6
+    time.sleep(5)
     if not RGB.Press(button):
         print('Button Pressed...')
         ## Get TDS and Turb value
