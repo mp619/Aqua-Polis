@@ -31,13 +31,19 @@ def StatusDirty(led):
     led.color = Color('red')
 
 def StatusMeasuring(led):
-    led.color = Color('orange')
-    time.sleep(1)
+    led.color = Color('blue')
+    time.sleep(0.75)
     led.color = Color('black')
-    time.sleep(1)
+    time.sleep(0.75)
 
 def StatusSending(led):
     led.color = Color('orange')
+
+def StatusFailSending(led):
+    led.color = Color('red')
+    time.sleep(0.75)
+    led.color = Color('black')
+    time.sleep(0.75)
 
 def StatusOff(led):
     led.off()
