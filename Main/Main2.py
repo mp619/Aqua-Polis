@@ -20,20 +20,22 @@ def on_message(client, userdata, message) :
    print("Received message:{} on topic{}".format(message.payload, message.topic))
    if(message.topic=="IC.embedded/M2S2/results"):
    # decode and turn from json to dict 
-       data = json.loads(message.payload)
-       drink = data['drink']
-       if drink == 'true':
-           STATUS = 2
-       else:
-           STATUS = 3
-       client.loop_stop()
+        data = (message.payload)
+        drink = data.split()[0]
+        if drink == 'true':
+            STATUS = 2
+        else:
+            STATUS = 3
+        client.loop_stop()
 
 #MQTT
 client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
 client.connect("146.169.198.107",port=1883)
 client.on_connect = on_connect
+client.subscribe("IC.embedded/M2S2/#")
 client.on_message = on_message
+client.on_subscribe = print('Subscribed to all topics')
 
 #temp_array = []
 
