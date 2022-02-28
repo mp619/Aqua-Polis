@@ -17,9 +17,10 @@ def on_connect(client, userdata, flags, rc):
 
 
 def on_message(client, userdata, message) :
-   print("Received message:{} on topic{}".format(message.payload, message.topic))
-   if(message.topic=="IC.embedded/M2S2/results"):
-   # decode and turn from json to dict 
+    global STATUS
+    print("Received message:{} on topic{}".format(message.payload, message.topic))
+    if(message.topic=="IC.embedded/M2S2/results"):
+    # decode and turn from json to dict 
         data = (message.payload)
         drink = data.split()[0]
         if drink == 'true':
