@@ -30,7 +30,8 @@ def convert(adc):
 	    adc = adc - 65535
     volts = adc*0.1875	# Convert to mv
     volts = volts*0.001   # Convert to V
-    turb = (-1250*volts + 4999.25)*0.001 #Convert Voltage to NTUs
+    turb = (-1120.4*volts^2 + 5742.3*volts - 4352.9)
+    #turb = (-1250*volts + 4999.25)*0.001 #Convert Voltage to NTUs
     if turb < 0:
         turb = 0
     return turb
