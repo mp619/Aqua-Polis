@@ -10,28 +10,44 @@ import json
 from dateutil.tz import tzutc
 import requests
 
-def on_publish(client, userdata, message) :
-    client.loop_forever()
+#Global Variable for LED Thread
+STATUS = 1
+
+def on_connect(client, userdata, flags, rc):
+    global STATUS
+    if rc ==0:
+        print("Successful Connection")
+        #print("Connected with result code "+str(rc))
+        client.subscribe("IC.embedded/M2S2/#")
+        STATUS = 6
+    else:
+        print("Bad Connection, returned code=", rc)
+        STATUS = 7
 
 
-#def on_message(client, userdata, message) :
-#    print("Received message:{} on topic{}".format(message.payload, message.topic))
-#    if(message.topic=="IC.embedded/M2S2/results"):
-#    # decode and turn from json to dict 
-#        data = json.loads(message.payload)
-#        drink = data['drink']
-#        if drink == 'true':
-#            STATUS = 2
-#        else:
-#            STATUS = 3
-#        client.loop_stop()
+
+def on_message(client, userdata, message) :
+    global STATUS
+    print("Received message:{} on topic{}".format(message.payload, message.topic))
+    if(message.topic=="IC.embedded/M2S2/results"):
+    # decode and turn from json to dict 
+        data = str((message.payload).decode())
+        drink = data.split()[0]
+        print(drink)
+        if drink == 'True':
+            STATUS = 2
+        else:
+            STATUS = 3
+        client.loop_stop()
 
 #MQTT
 client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
-client.connect("146.169.195.84",port=1883)
-#client.on_publish = on_publish
-#client.on_message = on_message
+client.connect("146.169.198.107",port=1883)
+client.on_connect = on_connect
+client.subscribe("IC.embedded/M2S2/#")
+client.on_message = on_message
+client.on_subscribe = print('Subscribed to all topics')
 
 #temp_array = []
 
@@ -43,17 +59,13 @@ button = RGB.ButtonInit()
 #TDS Config
 ADC_adr = 0x48 # ADC I2C address
 
-
-#Turb Config
-Turb.config(bus, ADC_adr)
-
-#Global Variable for LED Thread
-STATUS = 1
 # 1 Turns off LED
 # 2 Clean - Green
 # 3 Dirty - Red
-# 4 Processing - Yellow
-# 5 Sending/Receiving - Yellow Flashing
+# 4 Processing - Blue flashing
+# 5 Sending/Receiving - Yellow
+# 6 Before Button Press - Blue
+# 7 Comms Failed - Red Flashing
 
 def ledcolor():
     global STATUS
@@ -68,6 +80,10 @@ def ledcolor():
             RGB.StatusMeasuring(led)
         elif STATUS == 5:
             RGB.StatusSending(led)
+        elif STATUS == 6:
+            RGB.StatusOn(led)
+        elif STATUS == 7:
+            RGB.StatusFailSending(led)
         else:
             break
 
@@ -90,6 +106,7 @@ LED_Thread.start()
 #Message_Thread.start()
 
 while True:
+    time.sleep(5)
     if not RGB.Press(button):
         print('Button Pressed...')
         ## Get TDS and Turb value
@@ -112,6 +129,7 @@ while True:
             time.sleep(0.01)
             Turb_Total = Turb_Total + Turb.read(bus, ADC_adr)
         Turb_adc = Turb_Total/cycles
+        print(Turb_adc)
         Turb_value = Turb.convert(Turb_adc)
 
         print(TDS_value, 'ppm')
@@ -138,6 +156,7 @@ while True:
         print(json_output)
         MSG_INFO= client.publish("IC.embedded/M2S2/sensor",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
+        client.loop_start()
 
 
 
