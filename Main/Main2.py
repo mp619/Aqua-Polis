@@ -128,8 +128,8 @@ while True:
             Turb.config(bus, ADC_adr)
             time.sleep(0.01)
             Turb_Total = Turb_Total + Turb.read(bus, ADC_adr)
-            print(Turb_Total)
         Turb_adc = Turb_Total/cycles
+        print(Turb_adc)
         Turb_value = Turb.convert(Turb_adc)
 
         print(TDS_value, 'ppm')
