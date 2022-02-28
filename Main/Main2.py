@@ -21,7 +21,7 @@ def on_connect(client, userdata, flags, rc):
         client.subscribe("IC.embedded/M2S2/#")
         STATUS = 1
     else:
-        print("Failed Connection")
+        print("Bad Connection, returned code=", rc)
         STATUS = 7
 
 
