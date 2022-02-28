@@ -59,10 +59,6 @@ button = RGB.ButtonInit()
 #TDS Config
 ADC_adr = 0x48 # ADC I2C address
 
-
-#Turb Config
-Turb.config(bus, ADC_adr)
-
 # 1 Turns off LED
 # 2 Clean - Green
 # 3 Dirty - Red
@@ -132,6 +128,7 @@ while True:
             Turb.config(bus, ADC_adr)
             time.sleep(0.01)
             Turb_Total = Turb_Total + Turb.read(bus, ADC_adr)
+            print(Turb_Total)
         Turb_adc = Turb_Total/cycles
         Turb_value = Turb.convert(Turb_adc)
 
