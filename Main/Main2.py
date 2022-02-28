@@ -144,7 +144,7 @@ while True:
         print(json_output)
         MSG_INFO= client.publish("IC.embedded/M2S2/sensor",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
-        client.loop_start()
+        client.loop()
 
 
 
