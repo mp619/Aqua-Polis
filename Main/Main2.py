@@ -33,7 +33,8 @@ def on_message(client, userdata, message) :
     # decode and turn from json to dict 
         data = (message.payload)
         drink = data.split()[0]
-        if drink == 'true':
+        print(drink)
+        if drink == 'True':
             STATUS = 2
         else:
             STATUS = 3
