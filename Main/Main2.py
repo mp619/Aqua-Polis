@@ -26,7 +26,6 @@ def on_connect(client, userdata, flags, rc):
         STATUS = 7
 
 
-
 def on_message(client, userdata, message) :
     global STATUS
     print("Received message:{} on topic{}".format(message.payload, message.topic))
@@ -52,6 +51,7 @@ except:
 client.on_connect = on_connect
 client.subscribe("IC.embedded/M2S2/#")
 client.on_message = on_message
+client.on_publish = print('Published readings to broker')
 client.on_subscribe = print('Subscribed to all topics')
 
 #temp_array = []
