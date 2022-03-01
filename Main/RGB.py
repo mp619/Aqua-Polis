@@ -16,10 +16,11 @@ def ButtonInit():
     return button
 
 def Press(button):    # Return a bool if button is pressed and let go
-    if button.is_pressed:
-        return 1    # Return 1 if button pressed then released
-    else:
-        return 0    # Return 0 if button not released
+    while True:
+        if button.is_pressed:
+            return 1    # Return 1 if button pressed then released
+        else:
+            return 0    # Return 0 if button not released
 
 def StatusOn(led):
     led.color = Color('blue')
