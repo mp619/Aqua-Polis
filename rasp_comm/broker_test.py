@@ -5,7 +5,7 @@ import time
 import paho.mqtt.client as mqtt
 
 client = mqtt.Client()
-client.connect("146.169.204.73",port=1883)
+client.connect("146.169.195.84",port=1883)
 
 def Json_create( data ):
     a_datetime = datetime.datetime.now()

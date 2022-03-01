@@ -1,22 +1,27 @@
 # Aqua-Polis
 
 To do:
+
 Mati:
-- website, 
-- user guide
-- prototype and print
+- [x] website, 
+- [ ] user guide
+- [x] prototype and print
+
 Salman:
-- encription and script
-- video script
+- [ ] encription
+- [x] video script
+
 Sam:
-- map and user
-- video editing
+- [x] map and user
+- [ ] video editing
+
 Martin:
-- led
-- datasheet about threading and co
+- [x] led
+- [ ] datasheet about threading and co
+
 All: 
-- video
-- testing and demo simulation
+- [ ] video
+- [ ] testing and demo simulation
 
 --communication--
 - [x] Com raspberry-broker
@@ -38,21 +43,21 @@ All:
 - [x] Web app
 - [ ] Mobile app
 - [x] general page
-- [ ] User login info
+- [-] User login info
 - [x] User location
-- [ ] Data analysis and statistics
+- [x] Data analysis and statistics
 - [ ] User guide (stir and move it around, 10*10 average), led lights signals
-- [ ] Map (When creating the map need to select what source of water used e.g. Tap, river, fountain..)
+- [x] Map (When creating the map need to select what source of water used e.g. Tap, river, fountain..)
 - [x] socials
 - [ ] video
-- [ ] video script
-- [ ] prototype and print
+- [x] video script
+- [x] prototype and print
 
 
 --Sensor hardware and power--
 - [x] Turbidity
 - [x] TDS
-- [ ] LED 
+- [x] LED 
 - [x] button
 - [[]] Advanced model: Battery, More sensors, Temperature compensation ?
 - [ ] !! Connection safety (mqtt QOS type 2, highest level of service), missing connection on raspberry pi, flashing red light
