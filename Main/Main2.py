@@ -38,7 +38,7 @@ def on_message(client, userdata, message) :
             STATUS = 2
         else:
             STATUS = 3
-        client.loop_stop()
+#        client.loop_stop()
 
 #MQTT
 client = mqtt.Client()
@@ -48,7 +48,7 @@ try :
     STATUS = 6
 except:
     STATUS = 7
-client.on_connect = on_connect
+#client.on_connect = on_connect
 client.subscribe("IC.embedded/M2S2/#")
 client.on_message = on_message
 client.on_publish = print('Published readings to broker')
@@ -111,7 +111,7 @@ LED_Thread.start()
 #Message_Thread.start()
 
 while True:
-    client.reconnect()
+#    client.reconnect()
     if RGB.Press(button):
         print('Button Pressed...')
         ## Get TDS and Turb value
