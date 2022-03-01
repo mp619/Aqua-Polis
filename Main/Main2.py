@@ -15,6 +15,7 @@ STATUS = 1
 
 def on_connect(client, userdata, flags, rc):
     global STATUS
+    print(rc)
     if rc ==0:
         print("Successful Connection")
         #print("Connected with result code "+str(rc))
@@ -107,7 +108,7 @@ LED_Thread.start()
 
 while True:
     time.sleep(5)
-    if not RGB.Press(button):
+    if RGB.Press(button):
         print('Button Pressed...')
         ## Get TDS and Turb value
         STATUS = 4  # Processing 
