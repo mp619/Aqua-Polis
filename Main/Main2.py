@@ -44,7 +44,7 @@ def on_message(client, userdata, message) :
 #MQTT
 client = mqtt.Client()
 #client.tls_set(ca_certs="mosquitto.org.crt",certfile="client.crt",keyfile="client.key")
-client.connect("146.169.198.107",port=1883)
+client.connect("146.169.199.233",port=1883)
 client.on_connect = on_connect
 client.subscribe("IC.embedded/M2S2/#")
 client.on_message = on_message
