@@ -112,7 +112,7 @@ LED_Thread.start()
 
 while True:
     time.sleep(5)
-    if RGB.Press(button):
+    if not RGB.Press(button):
         print('Button Pressed...')
         ## Get TDS and Turb value
         STATUS = 4  # Processing 
@@ -159,7 +159,7 @@ while True:
         STATUS = 5
         json_output = Json_create( TDS_value, Turb_value, lat, lon)
         print(json_output)
-        MSG_INFO= client.publish("IC.embedded/M2S2/sensor",json_output)
+        MSG_INFO= client.publish("IC.embedded/M2S2/readings",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
         client.loop_start()
 
