@@ -77,3 +77,8 @@ accurate view of the water situation globally.
 - [Video](https://www.youtube.com/watch?v=wYGQqHpmxyM&ab_channel=MartinPrusa)
 - [Instagram](https://www.instagram.com/aqua_polis_official/)
 - [Source Code](https://github.com/mp619/Aqua-Polis)
+
+## Examples
+
+![akt text](/Logo/Reading.gif)
+![akt text](/Logo/Map.gif)
