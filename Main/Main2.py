@@ -9,6 +9,23 @@ import datetime
 import json
 from dateutil.tz import tzutc
 import requests
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import padding
+
+key_file = open("rprivate-key.pem", "rb")
+private_key = serialization.load_pem_private_key(
+    key_file.read(),
+    password=None,
+    backend=default_backend()
+)
+
+key_file = open("public-key.pem", "rb")
+public_key = serialization.load_pem_public_key(
+    key_file.read(),
+    backend=default_backend()
+)
 
 #Global Variable for LED Thread
 STATUS = 1
@@ -30,8 +47,14 @@ def on_message(client, userdata, message) :
     global STATUS
     print("Received message:{} on topic{}".format(message.payload, message.topic))
     if(message.topic=="IC.embedded/M2S2/results"):
-    # decode and turn from json to dict 
-        data = str((message.payload).decode())
+        original_message = private_key.decrypt(message.payload,
+                                                padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                                                            algorithm=hashes.SHA256(),
+                                                            label=None
+                                                            )
+                                                )
+        # decode and turn from json to dict 
+        data = str(original_message.decode())
         drink = data.split()[0]
         print(drink)
         if drink == 'True':
@@ -159,6 +182,8 @@ while True:
         STATUS = 5
         json_output = Json_create( TDS_value, Turb_value, lat, lon)
         print(json_output)
+        json_output = json_output.encode()
+        encMessage = public_key.encrypt(json_output,padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),algorithm=hashes.SHA256(),label=None))
         MSG_INFO= client.publish("IC.embedded/M2S2/readings",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
         client.loop_start()
