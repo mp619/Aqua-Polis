@@ -33,18 +33,17 @@ accurate view of the water situation globally.
 ## Structure
 
 ```bash
-├───Aqua-Polis
-├───Logo
-├───Main
-├───Miscellaneous
-├───ML models
-├───Protype
-├───rasp_comm
-├───SensorModules
+├───Logo                      # Logo
+├───Main                      # Raspi Source Files with modules
+├───Miscellaneous             # Diagrams and MATLAB files for user guide
+├───ML models                 # ML models
+├───Protype                   # 3D CAD Files
+├───rasp_comm                 # Communication testing files
+├───SensorModules             # Sensor Module Testing Files
 │   └───__pycache__
-├───Sensors
+├───Sensors                   # Sensor Testing
 │   └───SensorModules
-└───user guide
+└───user guide                # Diagrams for user guide
 ```
 
 ## Requirements
