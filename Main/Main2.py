@@ -175,6 +175,7 @@ while True:
             print("Latitude: ", lat)
             print("Longitude: ", lon)
         except:
+            # ideally a GPS module would be used to collect location data
             lat = 51.4963
             lon = -0.1769
 
@@ -187,6 +188,4 @@ while True:
         MSG_INFO= client.publish("IC.embedded/M2S2/readings",json_output)
         print(mqtt.error_string(MSG_INFO.rc))
         client.loop_start()
-
-
 
