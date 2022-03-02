@@ -35,7 +35,11 @@ accurate view of the water situation globally.
 - [Gravity - Analog Turbidity Sensor](https://thepihut.com/products/gravity-analog-turbidity-sensor-for-arduino)
 - [RGB LED - Common Anode](https://www.switchelectronics.co.uk/rgb-5mm-led-common-anode?gclid=CjwKCAiAyPyQBhB6EiwAFUuaknjoZDOvCiegB7PQRNGGT4M-8GdJmlnJEkNEyYxgr4OTNf9sPEa3QhoCVQYQAvD_BwE)
 - Button
+- Python Modules
+  - [Threading](https://docs.python.org/3.9/library/threading.html)
+  - [Time](https://docs.python.org/3.9/library/time.html)
 
 ### Setup
 - Connect components to approtiate pins on to the Raspberry Pi
 - [Download](https://www.python.org/downloads/) and install Python 3.9
+- 
