@@ -17,10 +17,10 @@ Sam:
 
 Martin:
 - [x] led
-- [ ] datasheet about threading and co
+- [x] datasheet about threading and co
 
 All: 
-- [ ] video
+- [x] video
 - [ ] testing and demo simulation
 
 --communication--
@@ -46,7 +46,7 @@ All:
 - [-] User login info
 - [x] User location
 - [x] Data analysis and statistics
-- [ ] User guide (stir and move it around, 10*10 average), led lights signals
+- [x] User guide (stir and move it around, 10*10 average), led lights signals
 - [x] Map (When creating the map need to select what source of water used e.g. Tap, river, fountain..)
 - [x] socials
 - [ ] video
