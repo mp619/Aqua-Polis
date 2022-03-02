@@ -38,6 +38,12 @@ accurate view of the water situation globally.
 - Python Modules
   - [Threading](https://docs.python.org/3.9/library/threading.html)
   - [Time](https://docs.python.org/3.9/library/time.html)
+  - [smbus2](https://pypi.org/project/smbus2/)
+  - [paho-mqtt](https://pypi.org/project/paho-mqtt/)
+  - [datatime](https://docs.python.org/3.9/library/datetime.html)
+  - [json](https://docs.python.org/3.9/library/json.html)
+  - [dateutil](https://dateutil.readthedocs.io/en/stable/)
+  - [requests](https://pypi.org/project/requests/)
 
 ### Setup
 - Connect components to approtiate pins on to the Raspberry Pi
