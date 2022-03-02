@@ -21,12 +21,8 @@ individuals and institutions on a local scale. We believe that only through coll
 intelligence we can assure our model and predictions are up to date and can meet
 the highest quality standards.
 
-From this vision was born AquaPolis, a network of IoT water sensors that can pro-
-vide an accessible solution both in the immediate and long-term future. Each de-
-vice can collect measurements of the water’s quality at any time, generating predic-
-tions on its potability based on a Machine Learning Model trained on big, verified
-data sets. In addition, the new data, uploaded on a map, helps the model make bet-
-ter predictions in the future, keeping track of the values locally and creating a more
+From this vision was born AquaPolis, a network of IoT water sensors that can provide an accessible solution both in the immediate and long-term future. Each device can collect measurements of the water’s quality at any time, generating predictions on its potability based on a Machine Learning Model trained on big, verified
+data sets. In addition, the new data, uploaded on a map, helps the model make better predictions in the future, keeping track of the values locally and creating a more
 accurate view of the water situation globally.
 
 ## Structure
