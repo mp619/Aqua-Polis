@@ -72,7 +72,7 @@ accurate view of the water situation globally.
 - [Download](https://www.python.org/downloads/) and install Python 3.9
 - Install relevent external modules
 - Transfer \Main to Raspberry Pi
-- Run main2.py containing full program
+- Run main2.py with in \Main containing full program
 
 ## Additonal Reference
 - Please see [ADS1115](https://www.ti.com/lit/ds/symlink/ads1114.pdf?ts=1646227673693&ref_url=https%253A%252F%252Fwww.google.co.za%252F) datasheet for further reading into sensor register intialization via I2C
