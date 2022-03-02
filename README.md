@@ -30,9 +30,20 @@ data sets. In addition, the new data, uploaded on a map, helps the model make be
 ter predictions in the future, keeping track of the values locally and creating a more
 accurate view of the water situation globally.
 
-##Structure
+## Structure
 
-
+├───Aqua-Polis
+├───Logo
+├───Main
+├───Miscellaneous
+├───ML models
+├───Protype
+├───rasp_comm
+├───SensorModules
+│   └───__pycache__
+├───Sensors
+│   └───SensorModules
+└───user guide
 
 ## Requirements
 
