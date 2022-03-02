@@ -57,3 +57,5 @@ accurate view of the water situation globally.
 
 ### Additonal Reference
 - Please see [ADS1115](https://www.ti.com/lit/ds/symlink/ads1114.pdf?ts=1646227673693&ref_url=https%253A%252F%252Fwww.google.co.za%252F) datasheet for further reading into sensor register intialization via I2C
+
+### Links
