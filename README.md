@@ -1,4 +1,7 @@
 # Imperial College EEE - ELEC60013 Embedded Systems
+
+![akt text](https://github.com/mp619/Aqua-Polis/tree/master/Logo/logo.png?raw=true)
+
 ## Aquapolis
 
 We often focus on the scarcity of water, yet the quality of it is as problematic: unsafe
