@@ -1,83 +1,65 @@
-# Aqua-Polis
+# Imperial College EEE - ELEC60013 Embedded Systems
+## Aquapolis
 
-To do:
+We often focus on the scarcity of water, yet the quality of it is as problematic: unsafe
+water is in the top 15 causes of death worldwide, counting more than 1.2 million
+victims only in 2017, as a study by the OurWorldInData highlights. This does not
+affect only rural areas but also urban ones, as in the recent case of the Flint Water
+Crisis.
 
-Mati:
-- [x] website, 
-- [ ] user guide
-- [x] prototype and print
+In addition to health implications, this represents an environmental and econom-
+ical problem as well: as reported from the CDP Global Water Report 2020, water
+security is a necessary issue to solve in order to achieve our Net Zero Goal and the
+multiple studies indicates how the financial impact of water risks is more than 5
+times greater than the cost of addressing them.
 
-Salman:
-- [ ] encription
-- [x] video script
+The first step to solve this problem is to have a closer insight into the quality of the
+water globally, integrating the data sets already present with new data collected by
+individuals and institutions on a local scale. We believe that only through collective
+intelligence we can assure our model and predictions are up to date and can meet
+the highest quality standards.
 
-Sam:
-- [x] map and user
-- [ ] video editing
-
-Martin:
-- [x] led
-- [ ] datasheet about threading and co
-
-All: 
-- [ ] video
-- [ ] testing and demo simulation
-
---communication--
-- [x] Com raspberry-broker
-- [x] Com sensors-raspberry
-- [x] Com rasp-server
-- [x] Com server-app
-- [ ] Encription
+From this vision was born AquaPolis, a network of IoT water sensors that can pro-
+vide an accessible solution both in the immediate and long-term future. Each de-
+vice can collect measurements of the water’s quality at any time, generating predic-
+tions on its potability based on a Machine Learning Model trained on big, verified
+data sets. In addition, the new data, uploaded on a map, helps the model make bet-
+ter predictions in the future, keeping track of the values locally and creating a more
+accurate view of the water situation globally.
 
 
---basic functionality--
-- [x] Sensors
-- [x] Server
-- [x] Broker
-- [x] Raspberry  
-- [x] ML model (Neural, classification problem, trained on dataset and test on new data uploaded)
+## Requirements
 
+- [Raspberry Pi Zero W](https://www.raspberrypi.com/products/raspberry-pi-zero-w/)
+- [CQRobot Ocean - TDS Sensor](https://www.amazon.co.uk/CQRobot-Ocean-Compatible-Scientific-Laboratory/dp/B08KXRHK7H/ref=asc_df_B08KXRHK7H/?tag=googshopuk-21&linkCode=df0&hvadid=463156464627&hvpos=&hvnetw=g&hvrand=10496818325336570027&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1006886&hvtargid=pla-1105654156265&psc=1)
+- [Gravity - Analog Turbidity Sensor](https://thepihut.com/products/gravity-analog-turbidity-sensor-for-arduino)
+- [RGB LED - Common Anode](https://www.switchelectronics.co.uk/rgb-5mm-led-common-anode?gclid=CjwKCAiAyPyQBhB6EiwAFUuaknjoZDOvCiegB7PQRNGGT4M-8GdJmlnJEkNEyYxgr4OTNf9sPEa3QhoCVQYQAvD_BwE)
+- Button
+- Python Modules
+  - [Threading](https://docs.python.org/3.9/library/threading.html)
+  - [Time](https://docs.python.org/3.9/library/time.html)
+  - [smbus2](https://pypi.org/project/smbus2/)
+  - [paho-mqtt](https://pypi.org/project/paho-mqtt/)
+  - [datatime](https://docs.python.org/3.9/library/datetime.html)
+  - [json](https://docs.python.org/3.9/library/json.html)
+  - [dateutil](https://dateutil.readthedocs.io/en/stable/)
+  - [requests](https://pypi.org/project/requests/)
+  - local - [TDS](https://github.com/mp619/Aqua-Polis/blob/master/Main/TDS.py)
+  - local - [Turbidity](https://github.com/mp619/Aqua-Polis/blob/master/Main/Turbidity.py)
+  - local - [RGB](https://github.com/mp619/Aqua-Polis/blob/master/Main/RGB.py)
 
---high level deliverables--
-- [x] Web app
-- [ ] Mobile app
-- [x] general page
-- [-] User login info
-- [x] User location
-- [x] Data analysis and statistics
-- [ ] User guide (stir and move it around, 10*10 average), led lights signals
-- [x] Map (When creating the map need to select what source of water used e.g. Tap, river, fountain..)
-- [x] socials
-- [ ] video
-- [x] video script
-- [x] prototype and print
+## Setup
+- Connect components to approtiate pins on to the Raspberry Pi
+- [Download](https://www.python.org/downloads/) and install Python 3.9
+- Install relevent external modules
+- Transfer \Main to Raspberry Pi
+- Run main2.py containing full program
 
+## Additonal Reference
+- Please see [ADS1115](https://www.ti.com/lit/ds/symlink/ads1114.pdf?ts=1646227673693&ref_url=https%253A%252F%252Fwww.google.co.za%252F) datasheet for further reading into sensor register intialization via I2C
 
---Sensor hardware and power--
-- [x] Turbidity
-- [x] TDS
-- [x] LED 
-- [x] button
-- [[]] Advanced model: Battery, More sensors, Temperature compensation ?
-- [ ] !! Connection safety (mqtt QOS type 2, highest level of service), missing connection on raspberry pi, flashing red light
-- [x] error handling more on range of sensor values?
-
--- Marketing page --
-- What: potability and water security (data to stress on the urgency of this problem)
-- Where: urban and rural areas application
-- When: anytime sensor functionality plus additional features with stable network
-- Why: social target, water quality problem and safe water sources
-- Who: costumer target, anyone who has this device and a phone
-- Marketing analysis
-
--- Advanced --
-- [x] Event queue (wait for ml result in a lopp ...)
-- [x] threading (2 sensors, 1 bus, threading with led and button, reading + website server?)
-- [x] Calibration
-- [[]] Additional sensors
-- [x] CAD prototype
-- [x] Second marketing page with advanced version (only prototype due to external project constraints)
-- [x] Creative way of using Python classes (ML model)
-
-![image](https://user-images.githubusercontent.com/59872205/155750775-1b88fc73-87a6-4835-b799-27842b31e469.png)
+## Links
+- [Website](https://aquapolis23.web.app/#/)
+- [Video](https://www.youtube.com/watch?v=wYGQqHpmxyM&ab_channel=MartinPrusa)
+- [Instagram](https://www.instagram.com/aqua_polis_official/)
+- [Source Code](https://github.com/mp619/Aqua-Polis)
