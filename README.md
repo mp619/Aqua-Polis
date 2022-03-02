@@ -44,8 +44,13 @@ accurate view of the water situation globally.
   - [json](https://docs.python.org/3.9/library/json.html)
   - [dateutil](https://dateutil.readthedocs.io/en/stable/)
   - [requests](https://pypi.org/project/requests/)
+  - local - [TDS](https://github.com/mp619/Aqua-Polis/blob/master/Main/TDS.py)
+  - local - [Turbidity](https://github.com/mp619/Aqua-Polis/blob/master/Main/Turbidity.py)
+  - local - [RGB](https://github.com/mp619/Aqua-Polis/blob/master/Main/RGB.py)
 
 ### Setup
 - Connect components to approtiate pins on to the Raspberry Pi
 - [Download](https://www.python.org/downloads/) and install Python 3.9
-- 
+- Install relevent external modules
+- Transfer \Main to Raspberry Pi
+- Run main2.py containing full program
