@@ -33,6 +33,7 @@ accurate view of the water situation globally.
 ## Structure
 
 ```bash
+.
 ├───Logo                      # Logo
 ├───Main                      # Raspi Source Files with modules
 ├───Miscellaneous             # Diagrams and MATLAB files for user guide
