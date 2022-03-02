@@ -1,6 +1,6 @@
 # Imperial College EEE - ELEC60013 Embedded Systems
 
-![akt text](https://github.com/mp619/Aqua-Polis/tree/master/Logo/logo.png?raw=true)
+![akt text](/Logo/logo.png?raw=true)
 
 ## Aquapolis
 
