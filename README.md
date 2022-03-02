@@ -29,12 +29,12 @@ accurate view of the water situation globally.
 
 ```bash
 .
+├───communication             # Communication testing files
 ├───Logo                      # Logo
 ├───Main                      # Raspi Source Files with modules
 ├───Miscellaneous             # Diagrams and MATLAB files for user guide
 ├───ML models                 # ML models
 ├───Protype                   # 3D CAD Files
-├───rasp_comm                 # Communication testing files
 ├───SensorModules             # Sensor Module Testing Files
 │   └───__pycache__
 ├───Sensors                   # Sensor Testing
@@ -77,6 +77,9 @@ accurate view of the water situation globally.
 - [Video](https://www.youtube.com/watch?v=wYGQqHpmxyM&ab_channel=MartinPrusa)
 - [Instagram](https://www.instagram.com/aqua_polis_official/)
 - [Source Code](https://github.com/mp619/Aqua-Polis)
+
+##
+- To see complete website build the web app then run flutter
 
 ## Examples
 
