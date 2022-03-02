@@ -111,7 +111,7 @@ LED_Thread.start()
 #Message_Thread.start()
 
 while True:
-#    client.reconnect()
+    client.reconnect()
     if RGB.Press(button):
         print('Button Pressed...')
         ## Get TDS and Turb value
