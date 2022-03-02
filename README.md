@@ -38,4 +38,4 @@ accurate view of the water situation globally.
 
 ### Setup
 - Connect components to approtiate pins on to the Raspberry Pi
-- 
+- [Download](https://www.python.org/downloads/) and install Python 3.9
