@@ -32,6 +32,7 @@ accurate view of the water situation globally.
 
 ## Structure
 
+```bash
 ├───Aqua-Polis
 ├───Logo
 ├───Main
@@ -44,6 +45,7 @@ accurate view of the water situation globally.
 ├───Sensors
 │   └───SensorModules
 └───user guide
+```
 
 ## Requirements
 
