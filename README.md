@@ -59,3 +59,6 @@ accurate view of the water situation globally.
 - Please see [ADS1115](https://www.ti.com/lit/ds/symlink/ads1114.pdf?ts=1646227673693&ref_url=https%253A%252F%252Fwww.google.co.za%252F) datasheet for further reading into sensor register intialization via I2C
 
 ## Links
+[Website](https://aquapolis23.web.app/#/)
+[Video](https://www.youtube.com/watch?v=wYGQqHpmxyM&ab_channel=MartinPrusa)
+[Instagram](https://www.instagram.com/aqua_polis_official/)
