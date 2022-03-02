@@ -10,8 +10,7 @@ victims only in 2017, as a study by the OurWorldInData highlights. This does not
 affect only rural areas but also urban ones, as in the recent case of the Flint Water
 Crisis.
 
-In addition to health implications, this represents an environmental and econom-
-ical problem as well: as reported from the CDP Global Water Report 2020, water
+In addition to health implications, this represents an environmental and economical problem as well: as reported from the CDP Global Water Report 2020, water
 security is a necessary issue to solve in order to achieve our Net Zero Goal and the
 multiple studies indicates how the financial impact of water risks is more than 5
 times greater than the cost of addressing them.
