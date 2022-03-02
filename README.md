@@ -28,7 +28,7 @@ ter predictions in the future, keeping track of the values locally and creating 
 accurate view of the water situation globally.
 
 
-### Requirements
+## Requirements
 
 - [Raspberry Pi Zero W](https://www.raspberrypi.com/products/raspberry-pi-zero-w/)
 - [CQRobot Ocean - TDS Sensor](https://www.amazon.co.uk/CQRobot-Ocean-Compatible-Scientific-Laboratory/dp/B08KXRHK7H/ref=asc_df_B08KXRHK7H/?tag=googshopuk-21&linkCode=df0&hvadid=463156464627&hvpos=&hvnetw=g&hvrand=10496818325336570027&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1006886&hvtargid=pla-1105654156265&psc=1)
@@ -48,14 +48,14 @@ accurate view of the water situation globally.
   - local - [Turbidity](https://github.com/mp619/Aqua-Polis/blob/master/Main/Turbidity.py)
   - local - [RGB](https://github.com/mp619/Aqua-Polis/blob/master/Main/RGB.py)
 
-### Setup
+## Setup
 - Connect components to approtiate pins on to the Raspberry Pi
 - [Download](https://www.python.org/downloads/) and install Python 3.9
 - Install relevent external modules
 - Transfer \Main to Raspberry Pi
 - Run main2.py containing full program
 
-### Additonal Reference
+## Additonal Reference
 - Please see [ADS1115](https://www.ti.com/lit/ds/symlink/ads1114.pdf?ts=1646227673693&ref_url=https%253A%252F%252Fwww.google.co.za%252F) datasheet for further reading into sensor register intialization via I2C
 
-### Links
+## Links
