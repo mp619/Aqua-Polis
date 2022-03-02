@@ -83,7 +83,7 @@ accurate view of the water situation globally.
 ## Links
 - [Website](https://aquapolis23.web.app/#/)
 - [Video](https://www.youtube.com/watch?v=wYGQqHpmxyM&ab_channel=MartinPrusa)
-- [User Guide]('user guide'/Aquapolis_User_Guide-2.pdf)
+- [User Guide](https://github.com/mp619/Aqua-Polis/blob/master/user%20guide/Aquapolis_User_Guide-2.pdf)
 - [Instagram](https://www.instagram.com/aqua_polis_official/)
 - [Source Code](https://github.com/mp619/Aqua-Polis)
 
