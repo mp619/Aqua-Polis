@@ -50,6 +50,13 @@ accurate view of the water situation globally.
 - [RGB LED - Common Anode](https://www.switchelectronics.co.uk/rgb-5mm-led-common-anode?gclid=CjwKCAiAyPyQBhB6EiwAFUuaknjoZDOvCiegB7PQRNGGT4M-8GdJmlnJEkNEyYxgr4OTNf9sPEa3QhoCVQYQAvD_BwE)
 - Button
 - Python Modules
+  - [numpy] (https://numpy.org)
+  - [pandas] (https://pandas.pydata.org)
+  - [sklearn] (https://scikit-learn.org/stable/)
+  - [seaborn] (https://pypi.org/project/seaborn/)
+  - [tensorflow] (https://www.tensorflow.org)
+  - [joblib] (https://pypi.org/project/joblib/)
+  - [cryptography] (https://pypi.org/project/cryptography/)
   - [Threading](https://docs.python.org/3.9/library/threading.html)
   - [Time](https://docs.python.org/3.9/library/time.html)
   - [smbus2](https://pypi.org/project/smbus2/)
